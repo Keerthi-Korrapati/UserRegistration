@@ -1,14 +1,11 @@
 package com.example.demo.Model;
 
-import java.time.LocalDate; 
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Range;
@@ -52,7 +49,6 @@ public class Users {
 	@NotBlank(message="ApplyType must not be blank : 506")
 	private String applyType;
 	
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String citizenship;
 	
 	@NotBlank(message="Gender must be select : 608")
@@ -64,5 +60,5 @@ public class Users {
 	@NotBlank(message="hintAnswer must not be blank : 607")
 	private String hintAnswer;
 	
-	
+
 }

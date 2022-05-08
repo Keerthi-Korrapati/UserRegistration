@@ -18,20 +18,16 @@ import com.example.demo.Service.UserRegService;
 @RestController
 @RequestMapping("/Users")
 public class UserRegRestController {
+	
 	@Autowired
 	UserRegService service;
-
 	@PostMapping("/addDetails")
 	public ResponseEntity<String> addDetails(@Validated @RequestBody Users reg) {
 		
 		if(reg.getDateOfBirth().isAfter(LocalDate.now())) {
 			throw new DOBNotFoundException("Date Of Birth should be correct");
 		}
-		
 		Users Response = service.addDetails(reg);
-		return new ResponseEntity<String>("Dear User,"+"\n"+"Your User Id is "+reg.getUserId()+" and your password is "+reg.getPassword()+"\n"+"You are planning for "+reg.getApplyType()+" and your citizenship is of "+reg.getCitizenship(), HttpStatus.OK);
-		
-	
+		return new ResponseEntity<String>("Dear User,"+"\n"+"Your User Id is "+Response.getUserId()+" and your password is "+Response.getPassword()+"\n"+"You are planning for "+Response.getApplyType()+" and your citizenship is of "+Response.getCitizenship(), HttpStatus.OK);
 	}
-
 }
